@@ -17,10 +17,12 @@ namespace Asistencia
         public static String Apellido;
         public static int Legajo;
         public static String Curso;
+
         AccesoDato oDato = new AccesoDato(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,7 +30,16 @@ namespace Asistencia
             PopulatePositionComboBox();
             CargarGrilla();
             cbxCurso.Text = "";
-            Campos();
+            try
+            {
+                Campos();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("CUARTO CUATRIMESTRE 2020");
+            }
+
         }
 
         //////////////////////////////Grilla/////////////////////////////////////
@@ -47,7 +58,7 @@ namespace Asistencia
             }
         }
 
-        
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -59,7 +70,7 @@ namespace Asistencia
             {
 
                 MessageBox.Show("no tiene nada , acaso no ve ? ");
-            }   
+            }
             txtLegajo.Text = "";
             txtNombre.Text = "";
             txtApellido.Text = "";
@@ -113,7 +124,7 @@ namespace Asistencia
         }
         private void btnAgregarEditado_Click(object sender, EventArgs e)
         {
-            PorDefecto();
+            
             Alumno A = new Alumno();
             if (txtLegajo.Text == "")
             {
@@ -148,27 +159,62 @@ namespace Asistencia
                     CargarGrilla();
                 }
             }
-        }
-        private void btnGrabar_Click(object sender, EventArgs e)
-        {
             PorDefecto();
-            Alumno A = new Alumno();
+        }
 
+        public bool Buscar()
+        {
+            bool resultado = false;
             if (txtLegajo.Text == "")
             {
                 MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
             }
-            if (txtNombre.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar El Nombre Del Alumno");
-            }
-            if (txtApellido.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar El Apellido Del Alumno");
-            }
             else
             {
+                Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
+                var sql = string.Format("select legajo from alumnos where legajo = @Legajo");
+                SqlCommand comando = new SqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
+                conexion.Open();
+                SqlDataReader dr = null;
+                dr = comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    MessageBox.Show("el alumno que quiere registrar ya existe");
+                    resultado = true;
+                    
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+            return resultado;
+        }
+        public void GrabarAlumno()
+        {
+            Alumno A = new Alumno();
+            if (!Buscar())
+            {
+                if (txtLegajo.Text == "")
+                {
+
+                    MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
+                }
+                if (txtNombre.Text == "")
+                {
+                    MessageBox.Show("Debe Ingresar El Nombre Del Alumno");
+                }
+                if (txtApellido.Text == "")
+                {
+                    MessageBox.Show("Debe Ingresar El Apellido Del Alumno");
+                }
+                else
+                {
+                    A.pLegajo = Convert.ToInt32(txtLegajo.Text);
                 A.pNombre = txtNombre.Text;
                 A.pApellido = txtApellido.Text;
                 A.pCurso = cbxCurso.SelectedIndex + 1;
@@ -189,7 +235,17 @@ namespace Asistencia
                 CargarGrilla();
             }
         }
-        //////////////////////////////METODOS/////////////////////////////////////
+            
+        }
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            Buscar();
+            
+            GrabarAlumno();
+
+            PorDefecto();
+        }
+        //////////////////////////////METODOS////////////////////////////////////////
         private void ActivarBotonesIngreso()
         {
             btnEditar.Enabled = false;
@@ -213,6 +269,7 @@ namespace Asistencia
             btnGrabar.Enabled = true;
             btnGrabar.Visible = false;
             dataGridView1.Enabled = false;
+            btnEliminar.Visible = true;
         }
         private void ActivarCampos()
         {
@@ -236,18 +293,42 @@ namespace Asistencia
             txtNombre.Text = "";
             txtApellido.Text = "";
             cbxCurso.Text = "";
+            btnEliminar.Visible = false;
         }
         private void Campos()
         {
-            Legajo = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            Nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                Legajo = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             PorDefecto();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Alumno A = new Alumno();
+            A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+            SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            var sql = @"delete from ALUMNOS 
+                       where LEGAJO = @Legajo";
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+
+            cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            CargarGrilla();
+            PorDefecto();
+        }
+
+        private void aistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAsistencia A = new frmAsistencia();
+            A.Show();
         }
     }
 }
