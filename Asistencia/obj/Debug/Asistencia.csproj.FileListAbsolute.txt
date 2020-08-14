@@ -1,0 +1,15 @@
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\Asistencia.exe.config
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\Asistencia.exe
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\Asistencia.pdb
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.Form1.resources
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.Properties.Resources.resources
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.csproj.GenerateResource.cache
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.csproj.CoreCompileInputs.cache
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.exe
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.pdb
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\EntityFramework.dll
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\EntityFramework.xml
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Emiliano\source\repos\Asistencia\Asistencia\obj\Debug\Asistencia.csproj.CopyComplete

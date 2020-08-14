@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UTNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALUMNOS">
+    <Key>
+      <PropertyRef Name="ID_ALUMNO" />
+    </Key>
+    <Property Name="ID_ALUMNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LEGAJO" Type="int" />
+    <Property Name="NOM_ALUMNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="APE_ALUMNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="COD_CURSO" Type="int" />
+  </EntityType>
+  <EntityType Name="CURSOS">
+    <Key>
+      <PropertyRef Name="COD_CURSO" />
+    </Key>
+    <Property Name="COD_CURSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOM_CURSO" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_COD_CURSO">
+    <End Role="CURSOS" Type="Self.CURSOS" Multiplicity="0..1" />
+    <End Role="ALUMNOS" Type="Self.ALUMNOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSOS">
+        <PropertyRef Name="COD_CURSO" />
+      </Principal>
+      <Dependent Role="ALUMNOS">
+        <PropertyRef Name="COD_CURSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UTNModelStoreContainer">
+    <EntitySet Name="ALUMNOS" EntityType="Self.ALUMNOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSOS" EntityType="Self.CURSOS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_COD_CURSO" Association="Self.FK_COD_CURSO">
+      <End Role="CURSOS" EntitySet="CURSOS" />
+      <End Role="ALUMNOS" EntitySet="ALUMNOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

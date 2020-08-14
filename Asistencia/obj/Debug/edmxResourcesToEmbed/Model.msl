@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UTNModelStoreContainer" CdmEntityContainer="UTNEntities">
+    <EntitySetMapping Name="ALUMNOS">
+      <EntityTypeMapping TypeName="UTNModel.ALUMNOS">
+        <MappingFragment StoreEntitySet="ALUMNOS">
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+          <ScalarProperty Name="LEGAJO" ColumnName="LEGAJO" />
+          <ScalarProperty Name="NOM_ALUMNO" ColumnName="NOM_ALUMNO" />
+          <ScalarProperty Name="APE_ALUMNO" ColumnName="APE_ALUMNO" />
+          <ScalarProperty Name="COD_CURSO" ColumnName="COD_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSOS">
+      <EntityTypeMapping TypeName="UTNModel.CURSOS">
+        <MappingFragment StoreEntitySet="CURSOS">
+          <ScalarProperty Name="COD_CURSO" ColumnName="COD_CURSO" />
+          <ScalarProperty Name="NOM_CURSO" ColumnName="NOM_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
