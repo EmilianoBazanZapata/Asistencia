@@ -37,13 +37,15 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRegistro = new System.Windows.Forms.TextBox();
             this.rbtPresente = new System.Windows.Forms.RadioButton();
             this.rbtAusente = new System.Windows.Forms.RadioButton();
             this.txtLgajoAbuscar = new System.Windows.Forms.TextBox();
             this.btnLegajo = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnGrabarEditado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -86,14 +88,14 @@
             // txtCurso
             // 
             this.txtCurso.Enabled = false;
-            this.txtCurso.Location = new System.Drawing.Point(33, 174);
+            this.txtCurso.Location = new System.Drawing.Point(33, 173);
             this.txtCurso.Name = "txtCurso";
             this.txtCurso.Size = new System.Drawing.Size(100, 20);
             this.txtCurso.TabIndex = 4;
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(249, 383);
+            this.btnGrabar.Location = new System.Drawing.Point(249, 382);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(112, 23);
             this.btnGrabar.TabIndex = 7;
@@ -134,15 +136,15 @@
             this.textBox1.Text = "REGISTRADOS";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // txtRegistro
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(794, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(339, 20);
-            this.textBox2.TabIndex = 12;
-            this.textBox2.Text = "PRESENTES";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRegistro.Enabled = false;
+            this.txtRegistro.Location = new System.Drawing.Point(794, 65);
+            this.txtRegistro.Name = "txtRegistro";
+            this.txtRegistro.Size = new System.Drawing.Size(339, 20);
+            this.txtRegistro.TabIndex = 12;
+            this.txtRegistro.Text = "PRESENTES";
+            this.txtRegistro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rbtPresente
             // 
@@ -203,19 +205,42 @@
             this.btnRefrescar.UseVisualStyleBackColor = true;
             this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(168, 383);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 19;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
+            // 
+            // btnGrabarEditado
+            // 
+            this.btnGrabarEditado.Location = new System.Drawing.Point(249, 353);
+            this.btnGrabarEditado.Name = "btnGrabarEditado";
+            this.btnGrabarEditado.Size = new System.Drawing.Size(75, 23);
+            this.btnGrabarEditado.TabIndex = 21;
+            this.btnGrabarEditado.Text = "button2";
+            this.btnGrabarEditado.UseVisualStyleBackColor = true;
+            this.btnGrabarEditado.Visible = false;
+            this.btnGrabarEditado.Click += new System.EventHandler(this.btnGrabarEditado_Click);
+            // 
             // frmAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1140, 450);
-            this.ControlBox = false;
+            this.Controls.Add(this.btnGrabarEditado);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.btnLegajo);
             this.Controls.Add(this.txtLgajoAbuscar);
             this.Controls.Add(this.rbtAusente);
             this.Controls.Add(this.rbtPresente);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtRegistro);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btnVolver);
@@ -248,12 +273,14 @@
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtRegistro;
         private System.Windows.Forms.RadioButton rbtPresente;
         private System.Windows.Forms.RadioButton rbtAusente;
         private System.Windows.Forms.TextBox txtLgajoAbuscar;
         private System.Windows.Forms.Button btnLegajo;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btnRefrescar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnGrabarEditado;
     }
 }

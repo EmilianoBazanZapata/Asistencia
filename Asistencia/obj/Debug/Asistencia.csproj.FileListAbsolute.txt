@@ -20,7 +20,6 @@ C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\EntityFramewo
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\EntityFramework.xml
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.Form1.resources
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.Properties.Resources.resources
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csproj.GenerateResource.cache
@@ -33,3 +32,4 @@ C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\Asistencia.ap
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.exe.manifest
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.application
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.frmAsistencia.resources
+C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache

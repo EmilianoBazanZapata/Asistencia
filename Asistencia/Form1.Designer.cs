@@ -114,7 +114,7 @@
             // 
             this.cbxCurso.Enabled = false;
             this.cbxCurso.FormattingEnabled = true;
-            this.cbxCurso.Location = new System.Drawing.Point(75, 127);
+            this.cbxCurso.Location = new System.Drawing.Point(75, 126);
             this.cbxCurso.Name = "cbxCurso";
             this.cbxCurso.Size = new System.Drawing.Size(100, 21);
             this.cbxCurso.TabIndex = 6;
@@ -131,7 +131,7 @@
             // 
             // btnAgregarEditado
             // 
-            this.btnAgregarEditado.Location = new System.Drawing.Point(89, 385);
+            this.btnAgregarEditado.Location = new System.Drawing.Point(89, 386);
             this.btnAgregarEditado.Name = "btnAgregarEditado";
             this.btnAgregarEditado.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarEditado.TabIndex = 8;

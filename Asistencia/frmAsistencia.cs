@@ -22,6 +22,8 @@ namespace Asistencia
 
         private void frmAsistencia_Load(object sender, EventArgs e)
         {
+            dataGridView1.Enabled = true;
+            dataGridView2.Enabled = false;
             CargarGrilla();
             CargarGrilla2();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -88,23 +90,24 @@ namespace Asistencia
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            Alumno A = new Alumno();
-            A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-            if (rbtPresente.Checked)
-                A.pPresente = true;
-            else
-                A.pPresente = false;
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-            sqlCon.Open();
-            SqlCommand Com = new SqlCommand("SP_ASISTENCIA", sqlCon);
-            Com.CommandType = CommandType.StoredProcedure;
-            Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
-            Com.Parameters.AddWithValue("@PRSENTE", A.pPresente);
+            Buscar();
+            //Alumno A = new Alumno();
+            //A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+            //if (rbtPresente.Checked)
+            //    A.pPresente = true;
+            //else
+            //    A.pPresente = false;
+            //SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            //sqlCon.Open();
+            //SqlCommand Com = new SqlCommand("SP_ASISTENCIA", sqlCon);
+            //Com.CommandType = CommandType.StoredProcedure;
+            //Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
+            //Com.Parameters.AddWithValue("@PRSENTE", A.pPresente);
 
-            Com.ExecuteNonQuery();
-            CargarGrilla2();
-            sqlCon.Close();
-            
+            //Com.ExecuteNonQuery();
+            //CargarGrilla2();
+            //sqlCon.Close();
+
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -152,9 +155,12 @@ namespace Asistencia
                 txtCurso.Text = "";
                 rbtAusente.Checked = false;
                 rbtPresente.Checked = false;
+                btnEditar.Enabled = true;
                 dataGridView1.Enabled = false;
                 dataGridView2.Enabled = true;
+                txtLgajoAbuscar.Text = "";
                 MessageBox.Show("se deshabiito la primer grilla y se habilito la segunda");
+                txtRegistro.Text = "ASISTENCIAS";
             }
             catch (Exception)
             {
@@ -171,7 +177,29 @@ namespace Asistencia
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //no borrar;
+        }
 
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            btnGrabarEditado.Enabled = false;
+            btnGrabarEditado.Visible = false;
+            btnGrabar.Visible = true;
+            btnGrabar.Enabled = true;
+            CargarGrilla();
+            CargarGrilla2();
+            MessageBox.Show("se logro traer todos los registros iniciales exitosamente");
+            dataGridView1.Enabled = true;
+            dataGridView2.Enabled = false;
+            btnEditar.Enabled = false;
+            txtLgajoAbuscar.Text = "";
+            MessageBox.Show("se deshabiito la primer grilla y se habilito la segunda");
+            txtRegistro.Text = "PRESENTES";
+        }
+
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 Legajo = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value.ToString());
@@ -191,6 +219,9 @@ namespace Asistencia
                 {
                     rbtAusente.Checked = true;
                 }
+                btnGrabarEditado.Enabled = true;
+                btnGrabarEditado.Visible = true;
+                btnGrabar.Visible = false;
             }
             catch (Exception)
             {
@@ -199,11 +230,94 @@ namespace Asistencia
             }
         }
 
-        private void btnRefrescar_Click(object sender, EventArgs e)
+        private void btnGrabarEditado_Click(object sender, EventArgs e)
         {
-            CargarGrilla();
-            CargarGrilla2();
-            MessageBox.Show("se logro traer todos los registros iniciales exitosamente");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            try
+            {
+                Alumno A = new Alumno();
+                A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                if (rbtPresente.Checked)
+                    A.pPresente = true;
+                else
+                    A.pPresente = false;
+               
+                sqlCon.Open();
+                SqlCommand Com = new SqlCommand("SP_ACTUALIZAR_ASISTENCIA", sqlCon);
+                Com.CommandType = CommandType.StoredProcedure;
+                Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
+                Com.Parameters.AddWithValue("@PRESENTE", A.pPresente);
+
+                Com.ExecuteNonQuery();
+                CargarGrilla2();
+                sqlCon.Close();
+                btnGrabarEditado.Enabled = false;
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("intente de nuevo");
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+           
+        }
+        public bool Buscar()
+        {
+            bool resultado = false;
+            if (txtLegajo.Text == "")
+            {
+                MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
+            }
+            else
+            {
+                Alumno A = new Alumno();
+                A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
+                var sql = string.Format(@"	select * 
+                                            from ASISTENCIA AA
+                                            where legajo = @Legajo
+                                            AND DAY(AA.FECHA) = DAY(GETDATE())
+                                            AND MONTH(AA.FECHA) = MONTH(GETDATE()) 
+                                            AND YEAR(AA.FECHA) = YEAR(GETDATE())");
+                SqlCommand comando = new SqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
+                conexion.Open();
+                SqlDataReader dr = null;
+                dr = comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    MessageBox.Show("el alumno que quiere registrar ya tiene grbado la ASISTENCIA");
+                    resultado = true;
+
+                }
+                else
+                {
+                    Alumno Al = new Alumno();
+                    Al.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                    if (rbtPresente.Checked)
+                        A.pPresente = true;
+                    else
+                        A.pPresente = false;
+                    SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+                    sqlCon.Open();
+                    SqlCommand Com = new SqlCommand("SP_ASISTENCIA", sqlCon);
+                    Com.CommandType = CommandType.StoredProcedure;
+                    Com.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
+                    Com.Parameters.AddWithValue("@PRSENTE", Al.pPresente);
+
+                    Com.ExecuteNonQuery();
+                    CargarGrilla2();
+                    sqlCon.Close();
+                    resultado = false;
+                }
+            }
+            return resultado;
         }
     }
+    
 }
