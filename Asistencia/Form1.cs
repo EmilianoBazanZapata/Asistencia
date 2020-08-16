@@ -27,6 +27,7 @@ namespace Asistencia
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             PopulatePositionComboBox();
             CargarGrilla();
             cbxCurso.Text = "";
@@ -329,6 +330,12 @@ namespace Asistencia
         {
             frmAsistencia A = new frmAsistencia();
             A.Show();
+            this.Hide();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

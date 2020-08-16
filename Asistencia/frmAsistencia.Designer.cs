@@ -28,12 +28,232 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtLegajo = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtCurso = new System.Windows.Forms.TextBox();
+            this.btnGrabar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.rbtPresente = new System.Windows.Forms.RadioButton();
+            this.rbtAusente = new System.Windows.Forms.RadioButton();
+            this.txtLgajoAbuscar = new System.Windows.Forms.TextBox();
+            this.btnLegajo = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnRefrescar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Location = new System.Drawing.Point(397, 93);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(391, 345);
+            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // txtLegajo
+            // 
+            this.txtLegajo.Enabled = false;
+            this.txtLegajo.Location = new System.Drawing.Point(33, 93);
+            this.txtLegajo.Name = "txtLegajo";
+            this.txtLegajo.Size = new System.Drawing.Size(100, 20);
+            this.txtLegajo.TabIndex = 1;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(33, 120);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 2;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Location = new System.Drawing.Point(33, 147);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtApellido.TabIndex = 3;
+            // 
+            // txtCurso
+            // 
+            this.txtCurso.Enabled = false;
+            this.txtCurso.Location = new System.Drawing.Point(33, 174);
+            this.txtCurso.Name = "txtCurso";
+            this.txtCurso.Size = new System.Drawing.Size(100, 20);
+            this.txtCurso.TabIndex = 4;
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.Location = new System.Drawing.Point(249, 383);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(112, 23);
+            this.btnGrabar.TabIndex = 7;
+            this.btnGrabar.Text = "Grabar Aistencia";
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(33, 382);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 8;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(794, 93);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(339, 345);
+            this.dataGridView2.TabIndex = 9;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(397, 65);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(391, 20);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "REGISTRADOS";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(794, 65);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(339, 20);
+            this.textBox2.TabIndex = 12;
+            this.textBox2.Text = "PRESENTES";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rbtPresente
+            // 
+            this.rbtPresente.AutoSize = true;
+            this.rbtPresente.Checked = true;
+            this.rbtPresente.Location = new System.Drawing.Point(33, 201);
+            this.rbtPresente.Name = "rbtPresente";
+            this.rbtPresente.Size = new System.Drawing.Size(67, 17);
+            this.rbtPresente.TabIndex = 13;
+            this.rbtPresente.TabStop = true;
+            this.rbtPresente.Text = "Presente";
+            this.rbtPresente.UseVisualStyleBackColor = true;
+            // 
+            // rbtAusente
+            // 
+            this.rbtAusente.AutoSize = true;
+            this.rbtAusente.Location = new System.Drawing.Point(33, 225);
+            this.rbtAusente.Name = "rbtAusente";
+            this.rbtAusente.Size = new System.Drawing.Size(64, 17);
+            this.rbtAusente.TabIndex = 14;
+            this.rbtAusente.Text = "Ausente";
+            this.rbtAusente.UseVisualStyleBackColor = true;
+            // 
+            // txtLgajoAbuscar
+            // 
+            this.txtLgajoAbuscar.Location = new System.Drawing.Point(607, 29);
+            this.txtLgajoAbuscar.Name = "txtLgajoAbuscar";
+            this.txtLgajoAbuscar.Size = new System.Drawing.Size(100, 20);
+            this.txtLgajoAbuscar.TabIndex = 15;
+            // 
+            // btnLegajo
+            // 
+            this.btnLegajo.Location = new System.Drawing.Point(713, 27);
+            this.btnLegajo.Name = "btnLegajo";
+            this.btnLegajo.Size = new System.Drawing.Size(75, 23);
+            this.btnLegajo.TabIndex = 16;
+            this.btnLegajo.Text = "Buscar";
+            this.btnLegajo.UseVisualStyleBackColor = true;
+            this.btnLegajo.Click += new System.EventHandler(this.btnLegajo_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(397, 28);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(204, 20);
+            this.textBox4.TabIndex = 17;
+            this.textBox4.Text = "INGRESE UN LEGAJO";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Location = new System.Drawing.Point(794, 26);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.btnRefrescar.TabIndex = 18;
+            this.btnRefrescar.Text = "Rerescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
+            // frmAsistencia
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1140, 450);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnRefrescar);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.btnLegajo);
+            this.Controls.Add(this.txtLgajoAbuscar);
+            this.Controls.Add(this.rbtAusente);
+            this.Controls.Add(this.rbtPresente);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnGrabar);
+            this.Controls.Add(this.txtCurso);
+            this.Controls.Add(this.txtApellido);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtLegajo);
+            this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmAsistencia";
             this.Text = "frmAsistencia";
+            this.Load += new System.EventHandler(this.frmAsistencia_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtLegajo;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtCurso;
+        private System.Windows.Forms.Button btnGrabar;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.RadioButton rbtPresente;
+        private System.Windows.Forms.RadioButton rbtAusente;
+        private System.Windows.Forms.TextBox txtLgajoAbuscar;
+        private System.Windows.Forms.Button btnLegajo;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnRefrescar;
     }
 }
