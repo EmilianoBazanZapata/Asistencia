@@ -33,3 +33,4 @@ C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.ex
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.application
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.frmAsistencia.resources
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache
+C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.frmReporte.resources

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Asistencia.exe" size="33264">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Asistencia.exe" size="61936">
       <assemblyIdentity name="Asistencia" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z9wCk6ZdBu1LUH6twIo54T/ySYy/owiaZlw2RC3iXC4=</dsig:DigestValue>
+        <dsig:DigestValue>LfPfT+s+uX07zOU2SJFDcbxzgSsa3vKKX8tLTfVBcl0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

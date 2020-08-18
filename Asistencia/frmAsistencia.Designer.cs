@@ -46,6 +46,7 @@
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnGrabarEditado = new System.Windows.Forms.Button();
+            this.btnReporte = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -149,12 +150,10 @@
             // rbtPresente
             // 
             this.rbtPresente.AutoSize = true;
-            this.rbtPresente.Checked = true;
             this.rbtPresente.Location = new System.Drawing.Point(33, 201);
             this.rbtPresente.Name = "rbtPresente";
             this.rbtPresente.Size = new System.Drawing.Size(67, 17);
             this.rbtPresente.TabIndex = 13;
-            this.rbtPresente.TabStop = true;
             this.rbtPresente.Text = "Presente";
             this.rbtPresente.UseVisualStyleBackColor = true;
             // 
@@ -218,20 +217,32 @@
             // 
             // btnGrabarEditado
             // 
-            this.btnGrabarEditado.Location = new System.Drawing.Point(249, 353);
+            this.btnGrabarEditado.Location = new System.Drawing.Point(249, 382);
             this.btnGrabarEditado.Name = "btnGrabarEditado";
-            this.btnGrabarEditado.Size = new System.Drawing.Size(75, 23);
+            this.btnGrabarEditado.Size = new System.Drawing.Size(112, 23);
             this.btnGrabarEditado.TabIndex = 21;
-            this.btnGrabarEditado.Text = "button2";
+            this.btnGrabarEditado.Text = "Grabar De Nuevo";
             this.btnGrabarEditado.UseVisualStyleBackColor = true;
             this.btnGrabarEditado.Visible = false;
             this.btnGrabarEditado.Click += new System.EventHandler(this.btnGrabarEditado_Click);
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.Location = new System.Drawing.Point(875, 27);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(253, 23);
+            this.btnReporte.TabIndex = 22;
+            this.btnReporte.Text = "Reporte de Asistencia";
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // frmAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1140, 450);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnGrabarEditado);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnRefrescar);
@@ -282,5 +293,6 @@
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnGrabarEditado;
+        private System.Windows.Forms.Button btnReporte;
     }
 }

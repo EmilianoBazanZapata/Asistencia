@@ -22,20 +22,29 @@ namespace Asistencia
 
         private void frmAsistencia_Load(object sender, EventArgs e)
         {
-            dataGridView1.Enabled = true;
-            dataGridView2.Enabled = false;
-            CargarGrilla();
-            CargarGrilla2();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            Legajo = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            Nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txtLegajo.Text = Convert.ToString(Legajo);
-            txtNombre.Text = Nombre;
-            txtApellido.Text = Apellido;
-            txtCurso.Text = Curso;
+            try
+            {
+                dataGridView1.Enabled = true;
+                dataGridView2.Enabled = false;
+                CargarGrilla();
+                CargarGrilla2();
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                Legajo = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txtLegajo.Text = Convert.ToString(Legajo);
+                txtNombre.Text = Nombre;
+                txtApellido.Text = Apellido;
+                txtCurso.Text = Curso;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("ventana de asistencia");
+            }
+           
         }
         private void CargarGrilla()
         {
@@ -91,22 +100,7 @@ namespace Asistencia
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             Buscar();
-            //Alumno A = new Alumno();
-            //A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-            //if (rbtPresente.Checked)
-            //    A.pPresente = true;
-            //else
-            //    A.pPresente = false;
-            //SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-            //sqlCon.Open();
-            //SqlCommand Com = new SqlCommand("SP_ASISTENCIA", sqlCon);
-            //Com.CommandType = CommandType.StoredProcedure;
-            //Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
-            //Com.Parameters.AddWithValue("@PRSENTE", A.pPresente);
-
-            //Com.ExecuteNonQuery();
-            //CargarGrilla2();
-            //sqlCon.Close();
+            
 
         }
 
@@ -153,8 +147,6 @@ namespace Asistencia
                 txtNombre.Text = "";
                 txtApellido.Text = "";
                 txtCurso.Text = "";
-                rbtAusente.Checked = false;
-                rbtPresente.Checked = false;
                 btnEditar.Enabled = true;
                 dataGridView1.Enabled = false;
                 dataGridView2.Enabled = true;
@@ -238,21 +230,34 @@ namespace Asistencia
                 Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLegajo.Text);
                 if (rbtPresente.Checked)
+                {
                     A.pPresente = true;
+                    sqlCon.Open();
+                    SqlCommand Com = new SqlCommand("SP_ACTUALIZAR_PRESENTE", sqlCon);
+                    Com.CommandType = CommandType.StoredProcedure;
+                    Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
+                    Com.Parameters.AddWithValue("@PRESENTE", A.pPresente);
+
+                    Com.ExecuteNonQuery();
+                    CargarGrilla2();
+                    sqlCon.Close();
+                    btnGrabarEditado.Enabled = false;
+                }
                 else
+                {
                     A.pPresente = false;
-               
-                sqlCon.Open();
-                SqlCommand Com = new SqlCommand("SP_ACTUALIZAR_ASISTENCIA", sqlCon);
-                Com.CommandType = CommandType.StoredProcedure;
-                Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
-                Com.Parameters.AddWithValue("@PRESENTE", A.pPresente);
 
-                Com.ExecuteNonQuery();
-                CargarGrilla2();
-                sqlCon.Close();
-                btnGrabarEditado.Enabled = false;
+                    sqlCon.Open();
+                    SqlCommand Com2 = new SqlCommand("SP_ACTUALIZAR_AUSENTE", sqlCon);
+                    Com2.CommandType = CommandType.StoredProcedure;
+                    Com2.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
+                    Com2.Parameters.AddWithValue("@PRESENTE", A.pPresente);
 
+                    Com2.ExecuteNonQuery();
+                    CargarGrilla2();
+                    sqlCon.Close();
+                    btnGrabarEditado.Enabled = false;
+                }
             }
             catch (Exception)
             {
@@ -297,26 +302,60 @@ namespace Asistencia
                 }
                 else
                 {
-                    Alumno Al = new Alumno();
-                    Al.pLegajo = Convert.ToInt32(txtLegajo.Text);
-                    if (rbtPresente.Checked)
-                        A.pPresente = true;
-                    else
-                        A.pPresente = false;
                     SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-                    sqlCon.Open();
-                    SqlCommand Com = new SqlCommand("SP_ASISTENCIA", sqlCon);
-                    Com.CommandType = CommandType.StoredProcedure;
-                    Com.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
-                    Com.Parameters.AddWithValue("@PRSENTE", Al.pPresente);
+                    try
+                    {
+                        Alumno Al = new Alumno();
+                        Al.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                        if (rbtPresente.Checked)
+                        {
+                            Al.pPresente = true;
+                            sqlCon.Open();
+                            SqlCommand Com = new SqlCommand("SP_PRESENTE", sqlCon);
+                            Com.CommandType = CommandType.StoredProcedure;
+                            Com.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
+                            Com.Parameters.AddWithValue("@PRESENTE", Al.pPresente);
 
-                    Com.ExecuteNonQuery();
-                    CargarGrilla2();
-                    sqlCon.Close();
+                            Com.ExecuteNonQuery();
+                            CargarGrilla2();
+                            sqlCon.Close();
+                            btnGrabarEditado.Enabled = false;
+                        }
+                        else
+                        {
+                            Al.pPresente = false;
+
+                            sqlCon.Open();
+                            SqlCommand Com2 = new SqlCommand("SP_AUSENTE", sqlCon);
+                            Com2.CommandType = CommandType.StoredProcedure;
+                            Com2.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
+                            Com2.Parameters.AddWithValue("@PRESENTE", Al.pPresente);
+
+                            Com2.ExecuteNonQuery();
+                            CargarGrilla2();
+                            sqlCon.Close();
+                            btnGrabarEditado.Enabled = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        MessageBox.Show("intente de nuevo");
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
                     resultado = false;
                 }
             }
             return resultado;
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            frmReporte fr = new frmReporte();
+            fr.Show();
         }
     }
     

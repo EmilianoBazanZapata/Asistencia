@@ -58,9 +58,6 @@ namespace Asistencia
                 cbxCurso.DataSource = Dt;
             }
         }
-
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -89,25 +86,6 @@ namespace Asistencia
             a.Fill(dt);
             dataGridView1.DataSource = dt;
         }
-        //////////////////////////////validaciones/////////////////////////////////////
-        //validacion para verificar si ingreso los caracteres correctos 
-        //el key press es un evento del textbox
-        private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validar.SoloNumeros(e);
-        }
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validar.SoloLetras(e);
-        }
-
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validar.SoloLetras(e);
-        }
-
-
         //////////////////////////////BOTONES/////////////////////////////////////
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -162,81 +140,27 @@ namespace Asistencia
             }
             PorDefecto();
         }
-
-        public bool Buscar()
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            bool resultado = false;
-            if (txtLegajo.Text == "")
-            {
-                MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
-            }
-            else
-            {
-                Alumno A = new Alumno();
-                A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-
-                var sql = string.Format("select legajo from alumnos where legajo = @Legajo");
-                SqlCommand comando = new SqlCommand(sql, conexion);
-                comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
-                conexion.Open();
-                SqlDataReader dr = null;
-                dr = comando.ExecuteReader();
-                if (dr.Read())
-                {
-                    MessageBox.Show("el alumno que quiere registrar ya existe");
-                    resultado = true;
-                    
-                }
-                else
-                {
-                    resultado = false;
-                }
-            }
-            return resultado;
+            PorDefecto();
         }
-        public void GrabarAlumno()
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             Alumno A = new Alumno();
-            if (!Buscar())
-            {
-                if (txtLegajo.Text == "")
-                {
+            A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+            SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            var sql = @"delete from asistencia 
+                       where legajo = @Legajo
+                       delete from ALUMNOS 
+                       where LEGAJO = @Legajo";
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(sql, conexion);
 
-                    MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
-                }
-                if (txtNombre.Text == "")
-                {
-                    MessageBox.Show("Debe Ingresar El Nombre Del Alumno");
-                }
-                if (txtApellido.Text == "")
-                {
-                    MessageBox.Show("Debe Ingresar El Apellido Del Alumno");
-                }
-                else
-                {
-                    A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-                A.pNombre = txtNombre.Text;
-                A.pApellido = txtApellido.Text;
-                A.pCurso = cbxCurso.SelectedIndex + 1;
-
-
-                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-                var sql = "INSERT INTO ALUMNOS VALUES(@Legajo,@Nombre , @Apellido , @Curso )";
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand(sql, conexion);
-
-                cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
-                cmd.Parameters.AddWithValue("@Nombre", A.pNombre);
-                cmd.Parameters.AddWithValue("@Apellido", A.pApellido);
-                cmd.Parameters.AddWithValue("@Curso", A.pCurso);
-
-                cmd.ExecuteNonQuery();
-                conexion.Close();
-                CargarGrilla();
-            }
-        }
-            
+            cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            CargarGrilla();
+            PorDefecto();
         }
         private void btnGrabar_Click(object sender, EventArgs e)
         {
@@ -245,6 +169,16 @@ namespace Asistencia
             GrabarAlumno();
 
             PorDefecto();
+        }
+        private void aistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAsistencia A = new frmAsistencia();
+            A.Show();
+            this.Hide();
+        }
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
         //////////////////////////////METODOS////////////////////////////////////////
         private void ActivarBotonesIngreso()
@@ -303,39 +237,98 @@ namespace Asistencia
                 Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
+        public bool Buscar()
         {
-            PorDefecto();
-        }
+            bool resultado = false;
+            if (txtLegajo.Text == "")
+            {
+                MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
+            }
+            else
+            {
+                Alumno A = new Alumno();
+                A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+                var sql = string.Format("select legajo from alumnos where legajo = @Legajo");
+                SqlCommand comando = new SqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
+                conexion.Open();
+                SqlDataReader dr = null;
+                dr = comando.ExecuteReader();
+                if (dr.Read())
+                {
+                    MessageBox.Show("el alumno que quiere registrar ya existe");
+                    resultado = true;
+
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+            return resultado;
+        }
+        public void GrabarAlumno()
         {
             Alumno A = new Alumno();
-            A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-            SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-            var sql = @"delete from ALUMNOS 
-                       where LEGAJO = @Legajo";
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand(sql, conexion);
+            if (!Buscar())
+            {
+                if (txtLegajo.Text == "")
+                {
 
-            cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
-            cmd.ExecuteNonQuery();
-            conexion.Close();
-            CargarGrilla();
-            PorDefecto();
+                    MessageBox.Show("Debe Ingresar El Legajo Del Alumno");
+                }
+                if (txtNombre.Text == "")
+                {
+                    MessageBox.Show("Debe Ingresar El Nombre Del Alumno");
+                }
+                if (txtApellido.Text == "")
+                {
+                    MessageBox.Show("Debe Ingresar El Apellido Del Alumno");
+                }
+                else
+                {
+                    A.pLegajo = Convert.ToInt32(txtLegajo.Text);
+                    A.pNombre = txtNombre.Text;
+                    A.pApellido = txtApellido.Text;
+                    A.pCurso = cbxCurso.SelectedIndex + 1;
+
+
+                    SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+                    var sql = "INSERT INTO ALUMNOS VALUES(@Legajo,@Nombre , @Apellido , @Curso )";
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conexion);
+
+                    cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
+                    cmd.Parameters.AddWithValue("@Nombre", A.pNombre);
+                    cmd.Parameters.AddWithValue("@Apellido", A.pApellido);
+                    cmd.Parameters.AddWithValue("@Curso", A.pCurso);
+
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+                    CargarGrilla();
+                }
+            }
+
         }
-
-        private void aistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        //////////////////////////////validaciones/////////////////////////////////////
+        //validacion para verificar si ingreso los caracteres correctos 
+        //el key press es un evento del textbox
+        private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            frmAsistencia A = new frmAsistencia();
-            A.Show();
-            this.Hide();
+            Validar.SoloNumeros(e);
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.SoloLetras(e);
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.SoloLetras(e);
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+
+
     }
 }
