@@ -14,6 +14,7 @@ namespace Asistencia
         public static String Curso;
         public static String Asistencia;
         public int Fila;
+        private SqlConnection cadenaconexion = new SqlConnection(Properties.Settings.Default.UTNconexion);
 
         public frmAsistencia()
         {
@@ -48,7 +49,7 @@ namespace Asistencia
         }
         private void CargarGrilla()
         {
-            SqlConnection cadenaconexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            
             String Consulta = @"	SELECT LEGAJO , NOM_ALUMNO AS'NOMBRE', APE_ALUMNO AS'APELLIDO',C.NOM_CURSO AS 'CURSO'
 	                                FROM ALUMNOS A , CURSOS C 
 	                                WHERE A.COD_CURSO = C.COD_CURSO";
@@ -61,7 +62,7 @@ namespace Asistencia
         }
         private void CargarGrilla2()
         {
-            SqlConnection cadenaconexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            
             String Consulta = @"	SELECT  A.LEGAJO , NOM_ALUMNO AS'NOMBRE', APE_ALUMNO AS'APELLIDO',  C.NOM_CURSO AS 'CURSO' , AA.FECHA AS 'FECHA'
 	                                FROM ALUMNOS A , CURSOS C , ASISTENCIA AA 
 	                                WHERE A.COD_CURSO = C.COD_CURSO 
@@ -113,20 +114,20 @@ namespace Asistencia
 
         private void btnLegajo_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
             try
             {
                 Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLgajoAbuscar.Text);
 
 
-                sqlCon.Open();
-                SqlCommand Com = new SqlCommand("SP_INFORMACION", sqlCon);
+                cadenaconexion.Open();
+                SqlCommand Com = new SqlCommand("SP_INFORMACION", cadenaconexion);
                 Com.CommandType = CommandType.StoredProcedure;
                 Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
 
 
-                SqlCommand Com2 = new SqlCommand("SP_ALUMNO", sqlCon);
+                SqlCommand Com2 = new SqlCommand("SP_ALUMNO", cadenaconexion);
                 Com2.CommandType = CommandType.StoredProcedure;
                 Com2.Parameters.AddWithValue("@LEGAJO", txtLgajoAbuscar.Text);
                 SqlDataAdapter a2 = new SqlDataAdapter();
@@ -142,7 +143,7 @@ namespace Asistencia
                 a.Fill(dt);
                 dataGridView2.DataSource = dt;
                 Com.ExecuteNonQuery();
-                sqlCon.Close();
+                cadenaconexion.Close();
                 txtLegajo.Text = "";
                 txtNombre.Text = "";
                 txtApellido.Text = "";
@@ -161,7 +162,7 @@ namespace Asistencia
             }
             finally
             {
-                sqlCon.Close();
+                cadenaconexion.Close();
             }
           
             
@@ -224,51 +225,39 @@ namespace Asistencia
 
         private void btnGrabarEditado_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-            try
-            {
+           
                 Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLegajo.Text);
                 if (rbtPresente.Checked)
                 {
                     A.pPresente = true;
-                    sqlCon.Open();
-                    SqlCommand Com = new SqlCommand("SP_ACTUALIZAR_PRESENTE", sqlCon);
+                    cadenaconexion.Open();
+                    SqlCommand Com = new SqlCommand("SP_ACTUALIZAR_PRESENTE", cadenaconexion);
                     Com.CommandType = CommandType.StoredProcedure;
                     Com.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
                     Com.Parameters.AddWithValue("@PRESENTE", A.pPresente);
 
                     Com.ExecuteNonQuery();
                     CargarGrilla2();
-                    sqlCon.Close();
+                    cadenaconexion.Close();
                     btnGrabarEditado.Enabled = false;
                 }
                 else
                 {
                     A.pPresente = false;
 
-                    sqlCon.Open();
-                    SqlCommand Com2 = new SqlCommand("SP_ACTUALIZAR_AUSENTE", sqlCon);
+                    cadenaconexion.Open();
+                    SqlCommand Com2 = new SqlCommand("SP_ACTUALIZAR_AUSENTE", cadenaconexion);
                     Com2.CommandType = CommandType.StoredProcedure;
                     Com2.Parameters.AddWithValue("@LEGAJO", A.pLegajo);
                     Com2.Parameters.AddWithValue("@PRESENTE", A.pPresente);
 
                     Com2.ExecuteNonQuery();
                     CargarGrilla2();
-                    sqlCon.Close();
+                    cadenaconexion.Close();
                     btnGrabarEditado.Enabled = false;
                 }
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("intente de nuevo");
-            }
-            finally
-            {
-                sqlCon.Close();
-            }
-           
+ 
         }
         public bool Buscar()
         {
@@ -281,17 +270,16 @@ namespace Asistencia
             {
                 Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-
+               
                 var sql = string.Format(@"	select * 
                                             from ASISTENCIA AA
                                             where legajo = @Legajo
                                             AND DAY(AA.FECHA) = DAY(GETDATE())
                                             AND MONTH(AA.FECHA) = MONTH(GETDATE()) 
                                             AND YEAR(AA.FECHA) = YEAR(GETDATE())");
-                SqlCommand comando = new SqlCommand(sql, conexion);
+                SqlCommand comando = new SqlCommand(sql, cadenaconexion);
                 comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
-                conexion.Open();
+                cadenaconexion.Open();
                 SqlDataReader dr = null;
                 dr = comando.ExecuteReader();
                 if (dr.Read())
@@ -302,7 +290,7 @@ namespace Asistencia
                 }
                 else
                 {
-                    SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+                    cadenaconexion.Close();
                     try
                     {
                         Alumno Al = new Alumno();
@@ -310,30 +298,30 @@ namespace Asistencia
                         if (rbtPresente.Checked)
                         {
                             Al.pPresente = true;
-                            sqlCon.Open();
-                            SqlCommand Com = new SqlCommand("SP_PRESENTE", sqlCon);
+                            cadenaconexion.Open();
+                            SqlCommand Com = new SqlCommand("SP_PRESENTE", cadenaconexion);
                             Com.CommandType = CommandType.StoredProcedure;
                             Com.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
                             Com.Parameters.AddWithValue("@PRESENTE", Al.pPresente);
 
                             Com.ExecuteNonQuery();
                             CargarGrilla2();
-                            sqlCon.Close();
+                            cadenaconexion.Close();
                             btnGrabarEditado.Enabled = false;
                         }
                         else
                         {
                             Al.pPresente = false;
 
-                            sqlCon.Open();
-                            SqlCommand Com2 = new SqlCommand("SP_AUSENTE", sqlCon);
+                            cadenaconexion.Open();
+                            SqlCommand Com2 = new SqlCommand("SP_AUSENTE", cadenaconexion);
                             Com2.CommandType = CommandType.StoredProcedure;
                             Com2.Parameters.AddWithValue("@LEGAJO", Al.pLegajo);
                             Com2.Parameters.AddWithValue("@PRESENTE", Al.pPresente);
 
                             Com2.ExecuteNonQuery();
                             CargarGrilla2();
-                            sqlCon.Close();
+                            cadenaconexion.Close();
                             btnGrabarEditado.Enabled = false;
                         }
                     }
@@ -344,7 +332,7 @@ namespace Asistencia
                     }
                     finally
                     {
-                        sqlCon.Close();
+                        cadenaconexion.Close();
                     }
                     resultado = false;
                 }
@@ -356,6 +344,11 @@ namespace Asistencia
         {
             frmReporte fr = new frmReporte();
             fr.Show();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("QUE LA FUERZA TE ACOMPAÑE");
         }
     }
     

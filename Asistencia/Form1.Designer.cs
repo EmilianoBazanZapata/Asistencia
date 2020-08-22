@@ -45,6 +45,9 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.elegirAlumnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refrescarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -131,7 +134,7 @@
             // 
             // btnAgregarEditado
             // 
-            this.btnAgregarEditado.Location = new System.Drawing.Point(89, 386);
+            this.btnAgregarEditado.Location = new System.Drawing.Point(89, 385);
             this.btnAgregarEditado.Name = "btnAgregarEditado";
             this.btnAgregarEditado.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarEditado.TabIndex = 8;
@@ -199,7 +202,10 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aistenciaToolStripMenuItem});
+            this.aistenciaToolStripMenuItem,
+            this.reporteToolStripMenuItem,
+            this.elegirAlumnoToolStripMenuItem,
+            this.refrescarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -212,6 +218,27 @@
             this.aistenciaToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.aistenciaToolStripMenuItem.Text = "Aistencia";
             this.aistenciaToolStripMenuItem.Click += new System.EventHandler(this.aistenciaToolStripMenuItem_Click);
+            // 
+            // reporteToolStripMenuItem
+            // 
+            this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.reporteToolStripMenuItem.Text = "Reporte";
+            this.reporteToolStripMenuItem.Click += new System.EventHandler(this.reporteToolStripMenuItem_Click);
+            // 
+            // elegirAlumnoToolStripMenuItem
+            // 
+            this.elegirAlumnoToolStripMenuItem.Name = "elegirAlumnoToolStripMenuItem";
+            this.elegirAlumnoToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
+            this.elegirAlumnoToolStripMenuItem.Text = "Elegir 3 Alumnos al Azar";
+            this.elegirAlumnoToolStripMenuItem.Click += new System.EventHandler(this.elegirAlumnoToolStripMenuItem_Click);
+            // 
+            // refrescarToolStripMenuItem
+            // 
+            this.refrescarToolStripMenuItem.Name = "refrescarToolStripMenuItem";
+            this.refrescarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.refrescarToolStripMenuItem.Text = "Refrescar";
+            this.refrescarToolStripMenuItem.Click += new System.EventHandler(this.refrescarToolStripMenuItem_Click);
             // 
             // btnSalir
             // 
@@ -285,6 +312,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aistenciaToolStripMenuItem;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem elegirAlumnoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refrescarToolStripMenuItem;
     }
 }
 

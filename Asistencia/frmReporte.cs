@@ -13,6 +13,7 @@ namespace Asistencia
 {
     public partial class frmReporte : Form
     {
+        private SqlConnection cadenaconexion = new SqlConnection(Properties.Settings.Default.UTNconexion);
         public frmReporte()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Asistencia
         }
         private void CargarGrilla()
         {
-            SqlConnection cadenaconexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            
             String Consulta = @"	select LEGAJO ,SUM(total_de_presentes)AS'CANTIDAD DE ASISTENCIAS A CLASES',
 	                                sum(total_de_ausentes)AS'CANTIDAD DE INASISTENCIAS A CLASES',
 		                            SUM(TOTAL_DE_CASLES)AS'CANTIDAD TOTAL DE CLASES' , 

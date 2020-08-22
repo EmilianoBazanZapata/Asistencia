@@ -47,6 +47,11 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnGrabarEditado = new System.Windows.Forms.Button();
             this.btnReporte = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +70,7 @@
             // txtLegajo
             // 
             this.txtLegajo.Enabled = false;
-            this.txtLegajo.Location = new System.Drawing.Point(33, 93);
+            this.txtLegajo.Location = new System.Drawing.Point(63, 93);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(100, 20);
             this.txtLegajo.TabIndex = 1;
@@ -73,7 +78,7 @@
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(33, 120);
+            this.txtNombre.Location = new System.Drawing.Point(63, 121);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 2;
@@ -81,7 +86,7 @@
             // txtApellido
             // 
             this.txtApellido.Enabled = false;
-            this.txtApellido.Location = new System.Drawing.Point(33, 147);
+            this.txtApellido.Location = new System.Drawing.Point(63, 147);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 3;
@@ -89,14 +94,14 @@
             // txtCurso
             // 
             this.txtCurso.Enabled = false;
-            this.txtCurso.Location = new System.Drawing.Point(33, 173);
+            this.txtCurso.Location = new System.Drawing.Point(63, 173);
             this.txtCurso.Name = "txtCurso";
             this.txtCurso.Size = new System.Drawing.Size(100, 20);
             this.txtCurso.TabIndex = 4;
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(249, 382);
+            this.btnGrabar.Location = new System.Drawing.Point(249, 383);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(112, 23);
             this.btnGrabar.TabIndex = 7;
@@ -150,7 +155,7 @@
             // rbtPresente
             // 
             this.rbtPresente.AutoSize = true;
-            this.rbtPresente.Location = new System.Drawing.Point(33, 201);
+            this.rbtPresente.Location = new System.Drawing.Point(63, 201);
             this.rbtPresente.Name = "rbtPresente";
             this.rbtPresente.Size = new System.Drawing.Size(67, 17);
             this.rbtPresente.TabIndex = 13;
@@ -160,7 +165,7 @@
             // rbtAusente
             // 
             this.rbtAusente.AutoSize = true;
-            this.rbtAusente.Location = new System.Drawing.Point(33, 225);
+            this.rbtAusente.Location = new System.Drawing.Point(63, 225);
             this.rbtAusente.Name = "rbtAusente";
             this.rbtAusente.Size = new System.Drawing.Size(64, 17);
             this.rbtAusente.TabIndex = 14;
@@ -236,12 +241,63 @@
             this.btnReporte.UseVisualStyleBackColor = true;
             this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Location = new System.Drawing.Point(33, 13);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(75, 23);
+            this.btnAyuda.TabIndex = 23;
+            this.btnAyuda.Text = "Ayuda";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Legajo :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 124);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Nombre :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 150);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Apellido :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Curso : ";
+            // 
             // frmAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1140, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnGrabarEditado);
             this.Controls.Add(this.btnEditar);
@@ -294,5 +350,10 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnGrabarEditado;
         private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.Button btnAyuda;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

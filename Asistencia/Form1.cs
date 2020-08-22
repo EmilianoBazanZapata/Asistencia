@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Asistencia
@@ -17,8 +11,9 @@ namespace Asistencia
         public static String Apellido;
         public static int Legajo;
         public static String Curso;
+        public SqlConnection cadenaconexion = new SqlConnection(Properties.Settings.Default.UTNconexion);
 
-        AccesoDato oDato = new AccesoDato(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
         public Form1()
         {
             InitializeComponent();
@@ -27,36 +22,37 @@ namespace Asistencia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            PopulatePositionComboBox();
-            CargarGrilla();
-            cbxCurso.Text = "";
+
             try
             {
-                Campos();
+                CargarGrilla();
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                CargarCombo(cbxCurso, "CURSOS");
+                cbxCurso.Text = "";
+                PorDefecto();
             }
             catch (Exception)
             {
 
-                MessageBox.Show("CUARTO CUATRIMESTRE 2020");
+                MessageBox.Show("todavia no hay alumnos cargados");
             }
-
         }
 
         //////////////////////////////Grilla/////////////////////////////////////
-        private void PopulatePositionComboBox()
+        public void CargarCombo(ComboBox Combo, string NombreTabla)
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True"))
-            {
-                SqlDataAdapter sqlDa = new SqlDataAdapter(@"	SELECT *
-                                                                FROM CURSOS C", sqlCon);
-                DataTable Dt = new DataTable();
-                sqlDa.Fill(Dt);
-                cbxCurso.ValueMember = "COD_CURSO";
-                cbxCurso.DisplayMember = "NOM_CURSO";
-                DataRow TopItem = Dt.NewRow();
-                cbxCurso.DataSource = Dt;
-            }
+
+            SqlConnection sqlcon = new SqlConnection(Properties.Settings.Default.UTNconexion);
+            String Consulta = @"select * from cursos";
+            DataTable DT = new DataTable();
+            SqlCommand cmd = new SqlCommand(Consulta, sqlcon);
+            sqlcon.Open();
+            DT.Load(cmd.ExecuteReader());
+            Combo.DataSource = DT;
+            Combo.ValueMember = DT.Columns[0].ColumnName;
+            Combo.DisplayMember = DT.Columns[1].ColumnName;
+            Combo.DropDownStyle = ComboBoxStyle.DropDownList;
+            sqlcon.Close();
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -67,7 +63,7 @@ namespace Asistencia
             catch (Exception)
             {
 
-                MessageBox.Show("no tiene nada , acaso no ve ? ");
+                MessageBox.Show("esta celda no tiene nada ");
             }
             txtLegajo.Text = "";
             txtNombre.Text = "";
@@ -75,11 +71,11 @@ namespace Asistencia
         }
         private void CargarGrilla()
         {
-            SqlConnection cadenaconexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+            SqlConnection sqlcon = new SqlConnection(Properties.Settings.Default.UTNconexion);
             String Consulta = @"	SELECT LEGAJO , NOM_ALUMNO AS'NOMBRE', APE_ALUMNO AS'APELLIDO',C.NOM_CURSO AS 'CURSO'
 	                                FROM ALUMNOS A , CURSOS C 
 	                                WHERE A.COD_CURSO = C.COD_CURSO";
-            SqlCommand cmd = new SqlCommand(Consulta, cadenaconexion);
+            SqlCommand cmd = new SqlCommand(Consulta, sqlcon);
             SqlDataAdapter a = new SqlDataAdapter();
             a.SelectCommand = cmd;
             DataTable dt = new DataTable();
@@ -89,12 +85,20 @@ namespace Asistencia
         //////////////////////////////BOTONES/////////////////////////////////////
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            ActivarCampos();
-            ActivarBotonesActualizar();
-            txtLegajo.Text = Convert.ToString(Legajo);
-            txtNombre.Text = Nombre;
-            txtApellido.Text = Apellido;
-            cbxCurso.Text = Curso;
+            if (Campos())
+            {
+                ActivarCampos();
+                ActivarBotonesActualizar();
+                txtLegajo.Text = Convert.ToString(Legajo);
+                txtNombre.Text = Nombre;
+                txtApellido.Text = Apellido;
+                cbxCurso.Text = Curso;
+            }
+            else
+            {
+                MessageBox.Show("intente registrar un alumno para poder editar sus datos");
+            }
+            
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -103,7 +107,7 @@ namespace Asistencia
         }
         private void btnAgregarEditado_Click(object sender, EventArgs e)
         {
-            
+
             Alumno A = new Alumno();
             if (txtLegajo.Text == "")
             {
@@ -120,9 +124,9 @@ namespace Asistencia
             if ((txtLegajo.Text != "") && (txtNombre.Text != "") && (txtApellido.Text != ""))
             {
 
-                SqlConnection sqlCon = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
-                sqlCon.Open();
-                SqlCommand Com = new SqlCommand("SP_ACTUALIZAR", sqlCon);
+
+                cadenaconexion.Open();
+                SqlCommand Com = new SqlCommand("SP_ACTUALIZAR", cadenaconexion);
                 Com.CommandType = CommandType.StoredProcedure;
                 {
                     A.pLegajo = Convert.ToInt32(txtLegajo.Text);
@@ -137,6 +141,7 @@ namespace Asistencia
                     Com.ExecuteNonQuery();
                     CargarGrilla();
                 }
+                cadenaconexion.Close();
             }
             PorDefecto();
         }
@@ -146,26 +151,27 @@ namespace Asistencia
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            SqlConnection sqcon = new SqlConnection(Properties.Settings.Default.UTNconexion);
             Alumno A = new Alumno();
             A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-            SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
             var sql = @"delete from asistencia 
                        where legajo = @Legajo
                        delete from ALUMNOS 
                        where LEGAJO = @Legajo";
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cadenaconexion.Open();
+            SqlCommand cmd = new SqlCommand(sql, cadenaconexion);
 
             cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
             cmd.ExecuteNonQuery();
-            conexion.Close();
+            cadenaconexion.Close();
             CargarGrilla();
             PorDefecto();
         }
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             Buscar();
-            
+
             GrabarAlumno();
 
             PorDefecto();
@@ -230,12 +236,23 @@ namespace Asistencia
             cbxCurso.Text = "";
             btnEliminar.Visible = false;
         }
-        private void Campos()
+        private bool Campos()
         {
+            Boolean resultado = false;
+            try
+            {
                 Legajo = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 Nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 Apellido = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 Curso = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                resultado = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("todavia no hay alumnos registrados");
+                resultado = false;
+            }
+            return resultado;
         }
         public bool Buscar()
         {
@@ -248,12 +265,12 @@ namespace Asistencia
             {
                 Alumno A = new Alumno();
                 A.pLegajo = Convert.ToInt32(txtLegajo.Text);
-                SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
 
                 var sql = string.Format("select legajo from alumnos where legajo = @Legajo");
-                SqlCommand comando = new SqlCommand(sql, conexion);
+                SqlCommand comando = new SqlCommand(sql, cadenaconexion);
                 comando.Parameters.AddWithValue("@Legajo", A.pLegajo);
-                conexion.Open();
+                cadenaconexion.Open();
                 SqlDataReader dr = null;
                 dr = comando.ExecuteReader();
                 if (dr.Read())
@@ -266,6 +283,7 @@ namespace Asistencia
                 {
                     resultado = false;
                 }
+                cadenaconexion.Close();
             }
             return resultado;
         }
@@ -295,10 +313,10 @@ namespace Asistencia
                     A.pCurso = cbxCurso.SelectedIndex + 1;
 
 
-                    SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-1E6MN4M\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=True");
+
                     var sql = "INSERT INTO ALUMNOS VALUES(@Legajo,@Nombre , @Apellido , @Curso )";
-                    conexion.Open();
-                    SqlCommand cmd = new SqlCommand(sql, conexion);
+                    cadenaconexion.Open();
+                    SqlCommand cmd = new SqlCommand(sql, cadenaconexion);
 
                     cmd.Parameters.AddWithValue("@Legajo", A.pLegajo);
                     cmd.Parameters.AddWithValue("@Nombre", A.pNombre);
@@ -306,7 +324,7 @@ namespace Asistencia
                     cmd.Parameters.AddWithValue("@Curso", A.pCurso);
 
                     cmd.ExecuteNonQuery();
-                    conexion.Close();
+                    cadenaconexion.Close();
                     CargarGrilla();
                 }
             }
@@ -328,7 +346,31 @@ namespace Asistencia
             Validar.SoloLetras(e);
         }
 
+        private void reporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporte fr = new frmReporte();
+            fr.Show();
+        }
 
+        private void elegirAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+            String Consulta = @"SELECT TOP 3 A.LEGAJO , A.NOM_ALUMNO AS'NOMBRE', A.APE_ALUMNO AS'APELLIDO', C.NOM_CURSO AS 'CURSO' 
+	                                    FROM ALUMNOS A , CURSOS C
+	                                    WHERE A.COD_CURSO = C.COD_CURSO
+                                        ORDER BY NEWID()";
+            SqlCommand cmd = new SqlCommand(Consulta, cadenaconexion);
+            SqlDataAdapter a = new SqlDataAdapter();
+            a.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            a.Fill(dt);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void refrescarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CargarGrilla();
+
+        }
     }
 }

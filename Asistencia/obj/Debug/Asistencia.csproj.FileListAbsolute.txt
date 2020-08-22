@@ -32,5 +32,7 @@ C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\Asistencia.ap
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.exe.manifest
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.application
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.frmAsistencia.resources
-C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache
 C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.frmReporte.resources
+C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\obj\Debug\Asistencia.csprojAssemblyReference.cache
+C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\UTNVisualStudio.mdf
+C:\Users\Emiliano\Documents\GitHub\Asistencia\Asistencia\bin\Debug\UTNVisualStudio_log.ldf

@@ -26,11 +26,11 @@ namespace Asistencia.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1E6MN4M\\SQLEXPRESS;Initial Catalog=UTN;Integrated Security=Tr" +
-            "ue")]
-        public string UTNConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\UTNVisualStud" +
+            "io.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string UTNconexion {
             get {
-                return ((string)(this["UTNConnectionString"]));
+                return ((string)(this["UTNconexion"]));
             }
         }
     }

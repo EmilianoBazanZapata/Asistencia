@@ -909,7 +909,7 @@ namespace Asistencia.UTNDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Asistencia.Properties.Settings.Default.UTNConnectionString;
+            this._connection.ConnectionString = global::Asistencia.Properties.Settings.Default.UTNconexion;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

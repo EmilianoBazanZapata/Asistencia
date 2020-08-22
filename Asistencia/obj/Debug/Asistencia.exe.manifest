@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Asistencia.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Asistencia.exe" version="1.0.0.9" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Asistencia" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Asistencia.exe" size="61936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Asistencia.exe" size="64496">
       <assemblyIdentity name="Asistencia" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LfPfT+s+uX07zOU2SJFDcbxzgSsa3vKKX8tLTfVBcl0=</dsig:DigestValue>
+        <dsig:DigestValue>4AGKKMxgqT9blMVJrS8w3PsYIWeMwdaFxGOyiDPMiWw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -77,13 +77,31 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Asistencia.exe.config" size="1509">
+  <file name="Asistencia.exe.config" size="1563">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1ZdXN5NZ3QQDbrRhFsgrt3vMlij4CeYOdS7uqzHUC9k=</dsig:DigestValue>
+      <dsig:DigestValue>csv6oJrVER9Y39TdfpncI7vDOQlK9KTG1jlXuLL8A3E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="UTNVisualStudio.mdf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>w66lajh1b/jFl5X6nigW6+G5j0bfMQiL3aIVc7n4gfA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="UTNVisualStudio_log.ldf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>5uL7fApEuK/ewV2jUzpeJNQ/4Mm9I5qP1dfoCWMUu0E=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
