@@ -50,12 +50,12 @@
 </tbody>
 </table>
 
-## Trabajo Practico Entregas :clipboard:
+## Entregas delTrabajo Practio :clipboard:
 - [X] Entrega Primera Parte
 - [ ] Entrega Segunda Parte
 - [ ] Entrega Tercera Parte
 
-## Trello :clipboard:
+## Capturas de Trello :clipboard:
 - [ ] Capturas del tablero de Trello
 
 
