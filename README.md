@@ -2,7 +2,7 @@
 # Información del Grupo Nº [<NI IDEA>] - 2W50
 
 
-## Nombre del Grupo :IMAGINEN UN NOMBRE
+## Nombre del Grupo :Hello World! 
 <table>
 <thead>
 <tr>
