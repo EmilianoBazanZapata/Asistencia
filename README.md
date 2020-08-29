@@ -46,3 +46,12 @@
 </tr>
 </tbody>
 </table>
+
+
+
+
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> Entrega Primera Parte</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> Entrega Segunda Parte</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> Entrega Tercera Parte</li>
+</ul>
