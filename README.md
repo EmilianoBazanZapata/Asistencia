@@ -35,7 +35,7 @@
 <tr>
 <td align="center">111623</td>
 <td align="left">Banuera , Aldana</td>
-<td align="left"><a href="https://github.com/aldana97">UsuarioGitHub</a></td>
+<td align="left"><a href="https://github.com/aldanaba97">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111606</td>
