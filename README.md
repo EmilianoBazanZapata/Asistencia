@@ -15,24 +15,5 @@
 <td align="left">Bazan Zapata ,Emiliano</td>
 <td align="left"><a href="https://github.com/EmilianoBazanZapata">UsuarioGitHub</a></td>
 <td align="left"><a href="https://ar.linkedin.com/" rel="nofollow">UserLinkedin</a></td>
-</tr>
-<tr>
-<td align="center">111111</td>
-<td align="left">Apellido, Nombre1 Nombre2</td>
-<td align="left"><a href="https://github.com/xxxx">UsuarioGitHub</a></td>
-<td align="left"><a href="https://ar.linkedin.com/" rel="nofollow">UserLinkedin</a></td>
-</tr>
-<tr>
-<td align="center">111111</td>
-<td align="left">Apellido, Nombre1 Nombre2</td>
-<td align="left"><a href="https://github.com/xxxx">UsuarioGitHub</a></td>
-<td align="left"><a href="https://ar.linkedin.com/" rel="nofollow">UserLinkedin</a></td>
-</tr>
-<tr>
-<td align="center">111111</td>
-<td align="left">Apellido, Nombre1 Nombre2</td>
-<td align="left"><a href="https://github.com/xxxx">UsuarioGitHub</a></td>
-<td align="left"><a href="https://ar.linkedin.com/" rel="nofollow">UserLinkedin</a></td>
-</tr>
 </tbody>
 </table>
