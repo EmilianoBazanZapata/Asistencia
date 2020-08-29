@@ -51,7 +51,7 @@
 </tbody>
 </table>
 
-## Entregas delTrabajo Practio :clipboard:
+## Entregas delTrabajo Practio 📦
 - [X] Entrega Primera Parte
 - [ ] Entrega Segunda Parte
 - [ ] Entrega Tercera Parte
