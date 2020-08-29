@@ -6,7 +6,6 @@
 <th align="center">Legajo</th>
 <th align="left">Apellidos Nombres</th>
 <th align="left">Cuenta GitHub</th>
-<th align="left">Linkedin</th>
 </tr>
 </thead>
 <tbody>
@@ -14,6 +13,5 @@
 <td align="center">111624</td>
 <td align="left">Bazan Zapata ,Emiliano</td>
 <td align="left"><a href="https://github.com/EmilianoBazanZapata">UsuarioGitHub</a></td>
-<td align="left"><a href="https://ar.linkedin.com/" rel="nofollow">UserLinkedin</a></td>
 </tbody>
 </table>
