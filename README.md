@@ -19,5 +19,10 @@
 <td align="left">Gomez Roggio ,mateo joaquin</td>
 <td align="left"><a href="https://github.com">UsuarioGitHub</a></td>
 </tr>
+<tr>
+<td align="center">111707</td>
+<td align="left">Paredes Cornelio ,karla sheyla</td>
+<td align="left"><a href="https://github.com/karlaCornelio">UsuarioGitHub</a></td>
+</tr>
 </tbody>
 </table>
