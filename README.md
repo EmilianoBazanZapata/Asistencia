@@ -1,5 +1,5 @@
 
-# Información del Grupo Nº [<NI IDEA>] - [<2W50>]
+# Información del Grupo Nº [<NI IDEA>] - 2W50
 
 
 ## Nombre del Grupo :IMAGINEN UN NOMBRE:
@@ -35,7 +35,7 @@
 <tr>
 <td align="center">111623</td>
 <td align="left">Banuera , Aldana</td>
-<td align="left"><a href="https://github.com">UsuarioGitHub</a></td>
+<td align="left"><a href="https://github.com/aldana97">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111606</td>
