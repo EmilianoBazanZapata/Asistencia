@@ -16,17 +16,22 @@
 </tr>
 <tr>
 <td align="center">111670</td>
-<td align="left">Gomez Roggio ,mateo joaquin</td>
+<td align="left">Gomez Roggio ,Mateo Joaquin</td>
 <td align="left"><a href="https://github.com">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111707</td>
-<td align="left">Paredes Cornelio ,karla sheyla</td>
+<td align="left">Paredes Cornelio ,Karla Sheyla</td>
 <td align="left"><a href="https://github.com/karlaCornelio">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111708</td>
-<td align="left">pena ,hernan</td>
+<td align="left">Pena ,Hernan</td>
+<td align="left"><a href="https://github.com/Blackhorde-coder">UsuarioGitHub</a></td>
+</tr>
+<tr>
+<td align="center">111623</td>
+<td align="left">Banuera , Aldana</td>
 <td align="left"><a href="https://github.com/Blackhorde-coder">UsuarioGitHub</a></td>
 </tr>
 </tbody>
