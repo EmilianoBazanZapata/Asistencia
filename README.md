@@ -24,5 +24,10 @@
 <td align="left">Paredes Cornelio ,karla sheyla</td>
 <td align="left"><a href="https://github.com/karlaCornelio">UsuarioGitHub</a></td>
 </tr>
+<tr>
+<td align="center">111708</td>
+<td align="left">pena ,hernan</td>
+<td align="left"><a href="https://github.com/Blackhorde-coder">UsuarioGitHub</a></td>
+</tr>
 </tbody>
 </table>
