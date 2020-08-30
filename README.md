@@ -21,7 +21,7 @@
 <tr>
 <td align="center">111670</td>
 <td align="left">Gomez Roggio ,Mateo Joaquin</td>
-<td align="left"><a href="https://github.com">UsuarioGitHub</a></td>
+<td align="left"><a href="https://github.com/mategomezr">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111707</td>
@@ -46,7 +46,7 @@
  <tr>
 <td align="center">111616</td>
 <td align="left">Apaza ,Pablo</td>
-<td align="left"><a href="https://github.com">UsuarioGitHub</a></td>
+<td align="left"><a href="https://github.com/PabloApaza19">UsuarioGitHub</a></td>
 </tr>
 </tbody>
 </table>
