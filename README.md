@@ -21,7 +21,7 @@
 <tr>
 <td align="center">111670</td>
 <td align="left">Gomez Roggio ,Mateo Joaquin</td>
-<td align="left"><a href="https://github.com/mategomezr">UsuarioGitHub</a></td>
+<td align="left"><a href="https://github.com/mateogomezr">UsuarioGitHub</a></td>
 </tr>
 <tr>
 <td align="center">111707</td>
