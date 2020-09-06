@@ -52,7 +52,7 @@
 </table>
 
 ## Entregas delTrabajo Practio 📦
-- [X] Entrega Primera Parte
+- [ ] Entrega Primera Parte
 - [ ] Entrega Segunda Parte
 - [ ] Entrega Tercera Parte
 
