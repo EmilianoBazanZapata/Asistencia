@@ -1,5 +1,5 @@
 
-# Información del Grupo Nº [<NI IDEA>] - 2W50
+# Información del Grupo Nº [<01>] - 2W50
 
 
 ## Nombre del Grupo :Que la fuerza te acompañe! 🚀
