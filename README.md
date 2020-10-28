@@ -18,36 +18,6 @@
 <td align="left">Bazan Zapata ,Emiliano</td>
 <td align="left"><a href="https://github.com/EmilianoBazanZapata">UsuarioGitHub</a></td>
 </tr>
-<tr>
-<td align="center">111670</td>
-<td align="left">Gomez Roggio ,Mateo Joaquin</td>
-<td align="left"><a href="https://github.com/mateogomezr">UsuarioGitHub</a></td>
-</tr>
-<tr>
-<td align="center">111707</td>
-<td align="left">Paredes Cornelio ,Karla Sheyla</td>
-<td align="left"><a href="https://github.com/karlaCornelio">UsuarioGitHub</a></td>
-</tr>
-<tr>
-<td align="center">111708</td>
-<td align="left">Pena ,Hernan</td>
-<td align="left"><a href="https://github.com/Blackhorde-coder">UsuarioGitHub</a></td>
-</tr>
-<tr>
-<td align="center">111623</td>
-<td align="left">Banuera , Aldana</td>
-<td align="left"><a href="https://github.com/aldanaba97">UsuarioGitHub</a></td>
-</tr>
-<tr>
-<td align="center">111606</td>
-<td align="left">Visintini , Fabio Ezequiel</td>
-<td align="left"><a href="https://github.com/evisintini">UsuarioGitHub</a></td>
-</tr>
- <tr>
-<td align="center">111616</td>
-<td align="left">Apaza ,Pablo</td>
-<td align="left"><a href="https://github.com/PabloApaza19">UsuarioGitHub</a></td>
-</tr>
 </tbody>
 </table>
 
