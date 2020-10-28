@@ -51,11 +51,6 @@
 </tbody>
 </table>
 
-## Entregas delTrabajo Practio 📦
-- [ ] Entrega Primera Parte
-- [ ] Entrega Segunda Parte
-- [ ] Entrega Tercera Parte
-
 ## Capturas de Trello :clipboard:
 - [ ] Monto total de ganancias en cuotas
 - [ ] Nombre y total de ganancias de las 3 actividades con mayor ganancia total.
